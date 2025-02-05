@@ -1,5 +1,5 @@
 {
-  "name": "ai-agent-starter-kit",
+  "name": "neurobot",
   "version": "2.0.0",
   "private": true,
   "scripts": {
@@ -18,10 +18,7 @@
     "lint": "pnpm -r run lint",
     "clean": "rimraf node_modules **/node_modules **/dist **/.next **/next-env.d.ts",
     "reset": "rimraf node_modules **/node_modules **/dist **/.next **/next-env.d.ts pnpm-lock.yaml eliza.sqlite twitter-cookies.json",
-    "letsgo": "pnpm i && pnpm run dev",
-    "version": "auto-changelog -p && git add CHANGELOG.md",
-    "release": "standard-version",
-    "prepare": "husky"
+    "letsgo": "pnpm i && pnpm run dev"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",

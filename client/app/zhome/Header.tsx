@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import ThemeToggler from './ThemeToggler'
 
-const HEADER_HEIGHT = '50px'
+const HEADER_HEIGHT = '60px'
 
 export function AppHeader() {
   const [sticky, setSticky] = useState(false)
@@ -21,13 +21,13 @@ export function AppHeader() {
   return (
     <>
       <header
-        className={`header left-0 top-0 z-40 flex h-[${HEADER_HEIGHT}] w-full items-center ${
+        className={`header left-0 top-0 z-20 flex h-[${HEADER_HEIGHT}] w-full items-center ${
           sticky
             ? 'dark:bg-gray-dark fixed z-[9999] bg-background !bg-opacity-80 shadow-sticky backdrop-blur-sm transition dark:shadow-sticky-dark'
             : 'absolute bg-transparent'
         }`}
       >
-        <div className="container">
+        <div className="container py-4">
           <div className="relative -mx-4 flex items-center justify-between">
             <Link
               href="/"

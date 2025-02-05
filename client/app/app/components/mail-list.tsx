@@ -1,6 +1,6 @@
 'use client'
 import type { ComponentProps } from 'react'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import * as dtFns from 'date-fns'
 
 import { cn } from 'lib/utils'
 import type { Mail } from '../data'
@@ -44,7 +44,7 @@ export function MailList({ items }: MailListProps) {
                     mail.selected === item.id ? 'text-foreground' : 'text-muted-foreground',
                   )}
                 >
-                  {formatDistanceToNow(new Date(item.date), {
+                  {dtFns.formatDistanceToNow(new Date(item.date), {
                     addSuffix: true,
                   })}
                 </div>
@@ -57,7 +57,8 @@ export function MailList({ items }: MailListProps) {
             {item.labels.length ? (
               <div className="flex items-center gap-2">
                 {item.labels.map((label) => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
+                  <Badge key={label}>
+                    {/* <Badge key={label} variant={getBadgeVariantFromLabel(label)}> */}
                     {label}
                   </Badge>
                 ))}
@@ -70,7 +71,8 @@ export function MailList({ items }: MailListProps) {
   )
 }
 
-function getBadgeVariantFromLabel(label: string): ComponentProps<typeof Badge>['variant'] {
+function getBadgeVariantFromLabel(label: string): ComponentProps<typeof Badge>['fontVariant'] {
+  // function getBadgeVariantFromLabel(label: string): ComponentProps<typeof Badge>['variant'] {
   if (['work'].includes(label.toLowerCase())) {
     return 'default'
   }

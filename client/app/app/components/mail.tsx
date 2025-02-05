@@ -32,11 +32,13 @@ export function Mail({
 }: MailProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
   const store = AppStores.useView()
+  const settingsStore = AppStores.useSettings()
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
         direction="horizontal"
         onLayout={(sizes: number[]) => {
+          settingsStore.update({ defaultLayout: sizes })
           document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(sizes)}`
         }}
         className="h-full max-h-[800px] items-stretch"
@@ -49,11 +51,13 @@ export function Mail({
           maxSize={20}
           onCollapse={() => {
             setIsCollapsed(true)
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(true)}`
+            settingsStore.update({ defaultCollapsed: true })
+            // document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(true)}`
           }}
           onResize={() => {
             setIsCollapsed(false)
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(false)}`
+            settingsStore.update({ defaultCollapsed: false })
+            // document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(false)}`
           }}
           className={cn(isCollapsed && 'min-w-[50px] transition-all duration-300 ease-in-out')}
         >

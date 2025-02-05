@@ -30,8 +30,6 @@ import { useAccount, useDisconnect } from 'wagmi'
 import { usePrivy, useWallets } from '@privy-io/react-auth'
 import { useSetActiveWallet } from '@privy-io/wagmi'
 
-import wagmiPrivyLogo from '../public/wagmi_privy_logo.png'
-
 const MonoLabel = ({ label }: { label: string }) => {
   return <span className="rounded-xl bg-slate-200 px-2 py-1 font-mono">{label}</span>
 }
@@ -55,7 +53,7 @@ export default function Home() {
       <main className="min-h-screen bg-slate-200 p-4 text-slate-800">
         <Image
           className="mx-auto rounded-lg"
-          src={wagmiPrivyLogo}
+          src={'/wagmi_privy_logo.png'}
           alt="wagmi x privy logo"
           width={400}
           height={100}

@@ -3,6 +3,8 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 export interface ISlice {
   drawerIsOpen?: boolean
+  defaultCollapsed?: boolean
+  defaultLayout?: number[]
 }
 
 export interface ISliceUpdate extends Required<ISlice> {
@@ -12,6 +14,8 @@ export interface ISliceUpdate extends Required<ISlice> {
 
 export const defaultValues: Required<ISlice> = {
   drawerIsOpen: false,
+  defaultCollapsed: false,
+  defaultLayout: []
 }
 
 export const useSettings = create(

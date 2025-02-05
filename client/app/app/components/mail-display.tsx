@@ -1,7 +1,8 @@
 'use client'
-import addDays from 'date-fns/addDays'
-import addHours from 'date-fns/addHours'
-import format from 'date-fns/format'
+// import addDays from 'date-fns/addDays'
+// import addHours from 'date-fns/addHours'
+import * as dtFns from 'date-fns'
+// import format from 'date-fns/format'
 import nextSaturday from 'date-fns/nextSaturday'
 import {
   Archive,
@@ -86,25 +87,25 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     <Button variant="ghost" className="justify-start font-normal">
                       Later today{' '}
                       <span className="ml-auto text-muted-foreground">
-                        {format(addHours(today, 4), 'E, h:m b')}
+                        {dtFns.format(dtFns.addHours(today, 4), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button variant="ghost" className="justify-start font-normal">
                       Tomorrow
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 1), 'E, h:m b')}
+                        {dtFns.format(dtFns.addDays(today, 1), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button variant="ghost" className="justify-start font-normal">
                       This weekend
                       <span className="ml-auto text-muted-foreground">
-                        {format(nextSaturday(today), 'E, h:m b')}
+                        {dtFns.format(dtFns.nextSaturday(today), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button variant="ghost" className="justify-start font-normal">
                       Next week
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 7), 'E, h:m b')}
+                        {dtFns.format(dtFns.addDays(today, 7), 'E, h:m b')}
                       </span>
                     </Button>
                   </div>
@@ -186,7 +187,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             </div>
             {mail.date && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(mail.date), 'PPpp')}
+                {dtFns.format(new Date(mail.date), 'PPpp')}
               </div>
             )}
           </div>

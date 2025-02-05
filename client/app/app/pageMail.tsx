@@ -3,15 +3,13 @@
 import Image from 'next/image'
 import { accounts, mails } from './data'
 import { Mail } from './components/mail'
+import { AppStores } from 'lib/zustand'
 
 export default function MailPage() {
-  const layout = localStorage.getItem('react-resizable-panels:layout:mail')
-  const collapsed = localStorage.getItem('react-resizable-panels:collapsed')
-  // const collapsed = cookies().get("react-resizable-panels:collapsed")
+  // const layout = localStorage.getItem('react-resizable-panels:layout:mail')
+  // const collapsed = localStorage.getItem('react-resizable-panels:collapsed')
 
-  const defaultLayout = layout ? JSON.parse(layout) : undefined
-  const defaultCollapsed = collapsed ? JSON.parse(collapsed) : undefined
-
+  const store = AppStores.useSettings()
   return (
     <>
       <div className="md:hidden">
@@ -34,8 +32,8 @@ export default function MailPage() {
         <Mail
           accounts={accounts}
           mails={mails}
-          defaultLayout={defaultLayout}
-          defaultCollapsed={defaultCollapsed}
+          defaultLayout={store.defaultLayout}
+          defaultCollapsed={store.defaultCollapsed}
           navCollapsedSize={4}
         />
       </div>
