@@ -1,5 +1,5 @@
 import type { IViews } from 'lib/zustand/screens'
-import { Inbox, BadgeDollarSign, File, Group, type LucideIcon } from 'lucide-react'
+import { Inbox, File, Group, type LucideIcon } from 'lucide-react'
 
 export const navData: {
   title: string
@@ -28,12 +28,5 @@ export const navData: {
     icon: Group,
     variant: 'ghost',
     view: 'GROUPS',
-  },
-  {
-    title: 'Market',
-    label: '',
-    icon: BadgeDollarSign,
-    variant: 'ghost',
-    view: 'MARKET',
   },
 ]
