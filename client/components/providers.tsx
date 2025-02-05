@@ -1,14 +1,16 @@
-'use client';
+'use client'
 
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {http} from 'viem';
-import {mainnet, sepolia} from 'viem/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { http } from 'viem'
+import { mainnet, sepolia } from 'viem/chains'
 
-import type {PrivyClientConfig} from '@privy-io/react-auth';
-import {PrivyProvider} from '@privy-io/react-auth';
-import {WagmiProvider, createConfig} from '@privy-io/wagmi';
+import type { PrivyClientConfig } from '@privy-io/react-auth'
+import { PrivyProvider } from '@privy-io/react-auth'
+import { WagmiProvider, createConfig } from '@privy-io/wagmi'
+import { ThemeProvider } from 'next-themes'
+// import { Analytics } from '@vercel/analytics/next'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
@@ -16,7 +18,7 @@ export const wagmiConfig = createConfig({
     [mainnet.id]: http(),
     [sepolia.id]: http(),
   },
-});
+})
 
 const privyConfig: PrivyClientConfig = {
   embeddedWallets: {
@@ -28,9 +30,9 @@ const privyConfig: PrivyClientConfig = {
   appearance: {
     showWalletLoginFirst: true,
   },
-};
+}
 
-export default function Providers({children}: {children: React.ReactNode}) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <PrivyProvider
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -41,9 +43,11 @@ export default function Providers({children}: {children: React.ReactNode}) {
     >
       <QueryClientProvider client={queryClient}>
         <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
-          {children}
+          <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
+            {children}
+          </ThemeProvider>
         </WagmiProvider>
       </QueryClientProvider>
     </PrivyProvider>
-  );
+  )
 }
