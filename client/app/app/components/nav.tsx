@@ -1,11 +1,12 @@
 'use client'
 
-import Link from 'next/link'
-import { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 import { cn } from 'lib/utils'
 import { buttonVariants } from 'components/ui/button'
 import { Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip'
+import { AppStores } from 'lib/zustand'
+import type { IViews } from 'lib/zustand/screens'
 
 interface NavProps {
   isCollapsed: boolean
@@ -14,10 +15,12 @@ interface NavProps {
     label?: string
     icon: LucideIcon
     variant: 'default' | 'ghost'
+    view: IViews
   }[]
 }
 
 export function Nav({ links, isCollapsed }: NavProps) {
+  const store = AppStores.useView()
   return (
     <div
       data-collapsed={isCollapsed}
@@ -28,18 +31,20 @@ export function Nav({ links, isCollapsed }: NavProps) {
           isCollapsed ? (
             <Tooltip key={index} delayDuration={0}>
               <TooltipTrigger asChild>
-                <Link
-                  href="#"
+                <p
                   className={cn(
                     buttonVariants({ variant: link.variant, size: 'icon' }),
                     'h-9 w-9',
                     link.variant === 'default' &&
                       'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white',
                   )}
+                  onClick={() => {
+                    store.update({ activeScreen: link.view })
+                  }}
                 >
                   <link.icon className="h-4 w-4" />
                   <span className="sr-only">{link.title}</span>
-                </Link>
+                </p>
               </TooltipTrigger>
               <TooltipContent side="right" className="flex items-center gap-4">
                 {link.title}
@@ -47,15 +52,16 @@ export function Nav({ links, isCollapsed }: NavProps) {
               </TooltipContent>
             </Tooltip>
           ) : (
-            <Link
+            <p
               key={index}
-              href="#"
               className={cn(
                 buttonVariants({ variant: link.variant, size: 'sm' }),
-                link.variant === 'default' &&
-                  'dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white',
-                'justify-start',
+                'justify-start hover:bg-card hover:text-foreground',
+                store.activeScreen === link.view ? 'bg-primary text-white' : ' bg-background text-muted',
               )}
+              onClick={() => {
+                store.update({ activeScreen: link.view })
+              }}
             >
               <link.icon className="mr-2 h-4 w-4" />
               {link.title}
@@ -69,7 +75,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   {link.label}
                 </span>
               )}
-            </Link>
+            </p>
           ),
         )}
       </nav>

@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import ThemeToggler from './ThemeToggler'
 
-const HEADER_HEIGHT = '70px'
+const HEADER_HEIGHT = '50px'
 
-export function Header() {
+export function AppHeader() {
   const [sticky, setSticky] = useState(false)
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {

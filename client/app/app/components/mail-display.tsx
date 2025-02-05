@@ -14,24 +14,7 @@ import {
   ReplyAll,
   Trash2,
 } from 'lucide-react'
-
-// import { DropdownMenuContent, DropdownMenuItem } from '@/registry/default/ui/dropdown-menu'
-// import { Avatar, AvatarFallback, AvatarImage } from '@/registry/new-york/ui/avatar'
-// import { Button } from '@/registry/new-york/ui/button'
-// import { Calendar } from '@/registry/new-york/ui/calendar'
-// import { DropdownMenu, DropdownMenuTrigger } from '@/registry/new-york/ui/dropdown-menu'
-// import { Label } from '@/registry/new-york/ui/label'
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/registry/new-york/ui/popover"
-// import { Separator } from "@/registry/new-york/ui/separator"
-// import { Switch } from '@/registry/new-york/ui/switch'
-// import { Textarea } from '@/registry/new-york/ui/textarea'
-// import { Separator } from '@radix-ui/react-select'
-// import { Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip'
-import { Mail } from '../data'
+import type { Mail } from '../data'
 import { Button } from 'components/ui/button'
 import {
   DropdownMenu,

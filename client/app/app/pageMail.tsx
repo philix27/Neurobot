@@ -4,9 +4,6 @@ import Image from 'next/image'
 import { accounts, mails } from './data'
 import { Mail } from './components/mail'
 
-// import { Mail } from "@/app/(app)/examples/mail/components/mail"
-// import { accounts, mails } from "@/app/(app)/examples/mail/data"
-
 export default function MailPage() {
   const layout = localStorage.getItem('react-resizable-panels:layout:mail')
   const collapsed = localStorage.getItem('react-resizable-panels:collapsed')

@@ -1,9 +1,9 @@
 'use client'
-import { ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import { cn } from 'lib/utils'
-import { Mail } from '../data'
+import type { Mail } from '../data'
 import { useMail } from '../use-mail'
 import { Badge } from 'lucide-react'
 import { ScrollArea } from 'components/ui/scroll-area'

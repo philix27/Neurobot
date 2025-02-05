@@ -10,13 +10,6 @@ import {
   SelectContent,
   SelectItem,
 } from '@radix-ui/react-select'
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/registry/new-york/ui/select"
 
 interface AccountSwitcherProps {
   isCollapsed: boolean

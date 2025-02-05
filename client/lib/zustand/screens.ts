@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-export type IScreens = 'INBOX' | 'BOTS' | 'GROUPS'
+export type IViews = 'INBOX' | 'BOTS' | 'GROUPS' | 'MARKET'
 export type IBots = 'General' | 'DeFi' | 'WEB3'
 
 export interface ISlice {
-  activeScreen?: IScreens
+  activeScreen?: IViews
   activeBot?: IBots
   activePersonalChat?: string
 }
